@@ -18,7 +18,7 @@ public class Locators {
     //    С помощью cssSelector написать локатор для получения всех элементов на странице
     By allElementsOnPage = By.cssSelector("*");
     //    С помощью cssSelector написать локатор для нажождения кнопок добавления в корзину по айди
-    By addToCartBtn = By.cssSelector(".inventory_item:nth-child(1) .btn_primary");
+    By addToCartBtn = By.cssSelector("#item_4_img_link");
     //    С помощью cssSelector написать локатор для нахождения всех кнопок внутри элемента с id = header_container
     By buttonsHeader = By.cssSelector("#header_container button");
     //    C помощью cssSelector написать локатор для названий продуктов используя css class
