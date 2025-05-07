@@ -25,6 +25,6 @@ public class AddProductToCartTest extends BaseTest {
         String badgeText = shoppingCartBadge.getText();
 
         //result
-        Assert.assertEquals("1", "1", badgeText);
+        Assert.assertEquals(badgeText, "1", (String.format("Expected 1 item in the cart, but found: %s", badgeText)));
     }
 }
