@@ -1,4 +1,4 @@
 package Pages;
 
-public class BasePage {
+abstract class BasePage {
 }

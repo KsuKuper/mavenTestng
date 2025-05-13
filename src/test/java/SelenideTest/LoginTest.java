@@ -1,11 +1,11 @@
-package Selenide;
+package SelenideTest;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static Selenide.PageUrls.LOGIN_URL;
+import static Urls.PageUrls.LOGIN_URL;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
