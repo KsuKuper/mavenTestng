@@ -19,7 +19,7 @@ public class CartPageSteps {
         cartPage.clickCheckoutButton();
     }
 
-    public void inputCheckoutInfoSteps(String firstName, String lastName, String zipCode) {
+    public void processAndValidateCheckoutInformation(String firstName, String lastName, String zipCode) {
         cartPage.checkYourInfoHeader();
         Assert.assertEquals(cartPage.checkYourInfoHeader(), "Checkout: Your Information", (String.format("Expected 'Checkout: Your Information' item in the cart, but found: %s", cartPage.checkYourInfoHeader())));
         cartPage.inputFirstName(firstName);
@@ -35,7 +35,7 @@ public class CartPageSteps {
         Assert.assertEquals(cartPage.checkTitleOrderComplete(), "Thank you for your order!", (String.format("Expected 'Thank you for your order!' item in the cart, but found: %s", cartPage.checkTitleOrderComplete())));
     }
 
-    public void addProductSauceLabsOnesieToCart() {
+    public void addSauceLabsOnesieToCartAndValidateResult() {
         cartPage.openCart();
         cartPage.checkYourCartHeader();
         Assert.assertEquals(cartPage.checkYourCartHeader(), "Your Cart", (String.format("Expected 'Your Cart' item in the cart, but found: %s", cartPage.checkYourCartHeader())));

@@ -69,7 +69,7 @@ public class AddProductToCartTest extends BaseTest {
         productPage.productItemSauceLabsOnesieToCart();
         CartPageSteps cartPageSteps = new CartPageSteps();
         cartPageSteps.buyProductItem();
-        cartPageSteps.inputCheckoutInfoSteps("Ksu", "Kuper", "225686");
+        cartPageSteps.processAndValidateCheckoutInformation("Ksu", "Kuper", "225686");
     }
 
     @Test
@@ -78,7 +78,7 @@ public class AddProductToCartTest extends BaseTest {
         LoginPageSteps loginPageSteps = new LoginPageSteps();
         loginPageSteps.login("standard_user", "secret_sauce");
         ProductPageSteps productPageSteps = new ProductPageSteps();
-        productPageSteps.sortProductByPrice();
+        productPageSteps.sortProductsByPriceWithValidation();
     }
 
     @Test
@@ -90,7 +90,7 @@ public class AddProductToCartTest extends BaseTest {
         Assert.assertEquals(productPage.checkHeader(), "Products", (String.format("Expected Products element on the page, but found: %s", productPage.checkHeader())));
         productPage.productItemSauceLabsOnesieToCart();
         CartPageSteps cartPageSteps = new CartPageSteps();
-        cartPageSteps.addProductSauceLabsOnesieToCart();
+        cartPageSteps.addSauceLabsOnesieToCartAndValidateResult();
     }
 
     @Test
