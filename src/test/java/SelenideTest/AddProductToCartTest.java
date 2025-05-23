@@ -1,9 +1,7 @@
 package SelenideTest;
 
-import Pages.CartPage;
-import Pages.LoginPage;
-import Pages.LogoutPage;
-import Pages.ProductPage;
+import Elements.ProductListItems;
+import Pages.*;
 import Steps.CartPageSteps;
 import Steps.LoginPageSteps;
 import Steps.ProductPageSteps;
@@ -106,4 +104,45 @@ public class AddProductToCartTest extends BaseTest {
         LoginPage loginPage = new LoginPage();
         Assert.assertFalse(loginPage.openLoginPage(), "Login page is open");
     }
+
+    @Test
+//    Элемент должен уметь перейти в детали продукта
+    public void openDetailOfProduct() {
+        LoginPageSteps loginPageSteps = new LoginPageSteps();
+        loginPageSteps.login("standard_user", "secret_sauce");
+        ProductListPage productListPage = new ProductListPage();
+        productListPage.openAndVerifierProductDetailPage();
+    }
+
+    @Test
+    // Элемент должен уметь добавить продукт, нужно учитывать состояние продукта на момент взаимодействия, если уже добавлен, то повторное добавление не производить
+    public void addProductToCart() {
+        LoginPageSteps loginPageSteps = new LoginPageSteps();
+        loginPageSteps.login("standard_user", "secret_sauce");
+        // Инициализация страницы списка продуктов
+        ProductListPage productListPage = new ProductListPage();
+        productListPage.addItemProductToCart();
+        // Проверка, что продукт добавлен в корзину
+        boolean isProductInCart = new ProductListItems("Sauce Labs Onesie").isProductInCart();
+        Assert.assertTrue(isProductInCart, "Продукт не был добавлен в корзину, хотя должен был быть.");
+    }
+
+    @Test
+    // Элемент должен уметь удалить продукт из корзины, нужно учитывать состояние продукта на момент взаимодействия, если не добавлен, то удаление не производить
+    public void addAndRemoveProductToCart() {
+        LoginPageSteps loginPageSteps = new LoginPageSteps();
+        loginPageSteps.login("standard_user", "secret_sauce");
+        ProductListPage productListPage = new ProductListPage();
+        productListPage.addItemProductToCart();
+        // Проверка, что продукт добавлен в корзину
+        boolean isProductInCart = new ProductListItems("Sauce Labs Onesie").isProductInCart();
+        Assert.assertTrue(isProductInCart, "Продукт не был добавлен в корзину, хотя должен был быть.");
+        productListPage.removeItemProductFromCart();
+        // Проверка, что продукт был удален из корзины
+        boolean isProductStillInCart = new ProductListItems("Sauce Labs Onesie").isProductInCart();
+        Assert.assertFalse(isProductStillInCart, "Продукт не был удален из корзины, хотя должен был быть.");
+    }
 }
+
+
+
