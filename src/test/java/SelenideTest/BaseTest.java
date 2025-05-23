@@ -11,6 +11,7 @@ public class BaseTest {
         Configuration.timeout = 10000;
         Configuration.pollingInterval = 1000;
         Configuration.browserSize = "1800x900";
+        Configuration.headless = true;
     }
 
     @AfterSuite(alwaysRun = true)
